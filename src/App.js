@@ -7,6 +7,7 @@ import UsersContainer from './react kabzda/Components/Users/UsersContainer';
 import Music from './react kabzda/Components/Navbar/Music';
 import { BrowserRouter, Route } from 'react-router-dom';
 import HeaderContainer from './react kabzda/Components/Header/HeaderContainer';
+import Login from './react kabzda/Components/Login/Login';
 
 
 
@@ -23,10 +24,9 @@ const App = (props) => {
         <div className='app-wrapper-content'>
 
           <Route path='/dialogs' render={() => <DialogsContainer />} />
-
-          <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-          
+          <Route path='/profile/:userId?' render={() => <ProfileContainer />} />          
           <Route path='/users' render={() => <UsersContainer />}  />
+          <Route path='/login' render={() => <Login />}  />
           
 
           <Route path='/news' component={NavBar} />

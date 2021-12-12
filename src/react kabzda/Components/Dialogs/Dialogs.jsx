@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogsItem from './DialogItem/DialogsItem';
 import Massage from './Massage/Massage';
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -23,6 +24,7 @@ const Dialogs = (props) => {
         props.updateNewMessageBody (body);
         
     }
+    if (!props.isAuth) return <Redirect to={'/Login'} />;
 
 
     return (
