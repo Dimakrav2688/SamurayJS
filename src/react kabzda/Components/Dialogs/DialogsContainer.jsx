@@ -2,29 +2,30 @@ import React from 'react';
 import { sendMessageCreator, updateNewMessageBodyCreator } from '../../redux/dialogs-reduser';
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
+import { withAuthRedirectHOC } from '../../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 
 const mapStateToProps = (state) => {
     return {
-        dialogsPage: state.dialogsPage,
-        isAuth: state.auth.isAuth,
+        dialogsPage: state.dialogsPage
     }
 }
+//пропс isAuth: state.auth.isAuth вырвали с мапстейт то пропс и потянули в шаблон НОС. потом зарефакторим говорил димон)
 const mapDispatchToProps = (dispatch) => {
     return {
         sendMessage: () => {
             dispatch(sendMessageCreator());
         },
-        
+
         updateNewMessageBody: (body) => {
             dispatch(updateNewMessageBodyCreator(body));
         }
     }
 }
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps) (Dialogs);
 
-export default DialogsContainer;
+export default compose( connect(mapStateToProps, mapDispatchToProps), withAuthRedirectHOC)(Dialogs);
 
 
 

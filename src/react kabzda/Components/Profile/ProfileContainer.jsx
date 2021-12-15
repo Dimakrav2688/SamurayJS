@@ -2,7 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
 import { getUserProfile } from '../../redux/profile-reduser';
-import {Redirect, withRouter} from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
+import { withAuthRedirectHOC } from "../../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 
 
@@ -11,25 +13,32 @@ import {Redirect, withRouter} from 'react-router-dom';
 class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId;
-        if (!userId) { userId=2;}
+        if (!userId) { userId = 2; }
         this.props.getUserProfile(userId)
     }
 
 
     render() {
-        if (!this.props.isAuth) return <Redirect to='/Login' />
         return (
             <Profile {...this.props} profile={this.props.profile} />
         );
     }
 }
+
+
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth,
+    profile: state.profilePage.profile    
 })
+//пропс isAuth: state.auth.isAuth вырвали с мапстейт то пропс и потянули в шаблон НОС. потом зарефакторим говорил димон)
 
-let WithUrlDataContainerComponent = withRouter (ProfileContainer);
 
-export default connect(mapStateToProps, { getUserProfile })(WithUrlDataContainerComponent);
 
+
+export default compose (
+    connect(mapStateToProps, { getUserProfile }),
+    withRouter,
+    // withAuthRedirectHOC
+)(ProfileContainer)
+//Важно!!! функция compose работает снизу в верх. Тоесть то что с низу начальное действие
+//далее верх и в верх окончание прокидывания в сонект. 
 
