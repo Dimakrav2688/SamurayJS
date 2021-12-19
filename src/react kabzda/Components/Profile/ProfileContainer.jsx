@@ -34,9 +34,6 @@ let mapStateToProps = (state) => ({
 })
 //пропс isAuth: state.auth.isAuth вырвали с мапстейт то пропс и потянули в шаблон НОС. потом зарефакторим говорил димон)
 
-
-
-
 export default compose(
     connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
     withRouter,

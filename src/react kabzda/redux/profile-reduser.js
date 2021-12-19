@@ -52,6 +52,7 @@ const profileReduser = (state = initialState, action) => {
 export const addPostActionCreator = () => ({ type: ADD_POST, });
 export const setUsersProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 export const setStatus = (status) => ({ type: SET_STATUS, status });
+export const updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
 
 
 export const getUserProfile = (userId) =>(dispatch) => {
@@ -63,8 +64,7 @@ export const getUserProfile = (userId) =>(dispatch) => {
 
 export const getStatus = (userId) =>(dispatch) => {
     profileAPI.getStatus(userId)    
-            .then(response => {
-                
+            .then(response => {                
                 dispatch(setStatus(response.data));  
             });
 } ;
@@ -79,7 +79,7 @@ export const updateStatus = (status) =>(dispatch) => {
 } ;
 
 
-export const updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
+
 
 export default profileReduser;
 
