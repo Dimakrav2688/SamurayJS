@@ -42,9 +42,19 @@ export const profileAPI = {
 
 export const authAPI = {
     me() {
-        return instance.get(`auth/me`)
+        return instance.get(`auth/me`);
+    },
+    Login(email, password, rememberMe = false) {
+        return instance.post(`auth/login`, {email, password, rememberMe});
+    },
+    Logout() {
+        return instance.delete(`auth/login`);
     }
 }
+
+
+
+
 
 /* then(response.data) сначала делаем запрос вего масива, далее мы пишем респонс  и передаём только масив дату, когда
 заинсертили гетЮзерс, то там когда пишем респорс педаётся этот респонс с значением дата, это промис....
