@@ -4,6 +4,7 @@ import dialogsReduser from './dialogs-reduser'
 import sidebarReduser from './sidebar-reduser'
 import usersReduser from "./users-reduser";
 import authReduser from "./auth-reduser";
+import appReduser from './app-reduser'
 import thunkMiddleware from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form'
 // import thunk from 'redux-thunk'
@@ -15,6 +16,7 @@ let reducers =  combineReducers({
     usersPage: usersReduser,
     auth: authReduser,
     form: formReducer,
+    app: appReduser,
 });
 
 

@@ -9,3 +9,10 @@
 {    
  color: red;
 }
+
+.formSummeryError {
+    border: tomato 1px solid;
+    padding: 5px;
+    color: yellowgreen;
+    margin: 5px;
+}
