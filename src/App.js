@@ -14,21 +14,15 @@ import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import Preloader from './react kabzda/Components/Common/Preloader/Preloader';
 
-
-
-
-
-
 class App extends Component {
   componentDidMount() {
-    this.props.initializeApp();
+    this.props.initializeApp()      
   }
 
   render() {
     if (!this.props.initialized) {
-    return  <Preloader />
-  }
-
+      return <Preloader />
+    }
 
     return (
       <BrowserRouter>

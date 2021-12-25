@@ -21,8 +21,6 @@ const authReduser = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload,
-
-
       }
 
     default:
@@ -36,7 +34,7 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({
 });
 
 export const getAuthUserData = () => (dispatch) => {
-  authAPI.me()
+  return authAPI.me()
     .then(response => {
       if (response.data.resultCode === 0) {
         let { id, email, login } = response.data.data;
@@ -58,11 +56,11 @@ export const login = (email, password, rememberMe) => (dispatch) => {
     })
 }
 
-export const logout = (email, password, rememberMe, isAuth) => (dispatch) => {
+export const logout = () => (dispatch) => {
   authAPI.Logout()
     .then(response => {
       if (response.data.resultCode === 0) {
-        dispatch(getAuthUserData(null, null, null, false));
+        dispatch(setAuthUserData(null, null, null, false));
       }
     })
 }
