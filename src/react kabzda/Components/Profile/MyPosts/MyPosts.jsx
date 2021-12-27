@@ -5,9 +5,11 @@ import { Field, reduxForm } from 'redux-form';
 import { required, maxLenghtCreator } from '../../../../utils/validators/validator'
 import { Textarea } from "../../Common/FromsControls/FormsControls";
 
-const MyPosts = (props) => {
+const MyPosts = React.memo (props => {
     let postsDataElements =
-        props.postsData.map(postData => <Post key={postData.id} message={postData.message} likesCount={postData.likesCount} />);
+        [...props.postsData]
+        .reverse()
+        .map(postData => <Post key={postData.id} message={postData.message} likesCount={postData.likesCount} />);
 
 
 
@@ -53,7 +55,7 @@ const MyPosts = (props) => {
             </div>
         </div >
     );
-}
+})
 
 
 export default MyPosts;
