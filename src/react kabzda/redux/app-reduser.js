@@ -1,7 +1,4 @@
-import { authAPI } from "../api/api";
-import { stopSubmit } from 'redux-form'
 import { getAuthUserData } from "./auth-reduser";
-import { promises } from "form-data";
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 
 

@@ -3,29 +3,26 @@ import { connect } from 'react-redux';
 // import LoginForm from './LoginForm';
 import { Field, reduxForm } from 'redux-form';
 import { required } from '../../../utils/validators/validator';
-import { Input } from '../Common/FromsControls/FormsControls';
+import { Input, createField } from '../Common/FromsControls/FormsControls';
 import { login } from '../../redux/auth-reduser'
 import { Redirect } from 'react-router-dom';
 import style from '../Common/FromsControls/FormsControls.module.css'
 
-const LoginForm = (props) => {
+const LoginForm = ({ handleSubmit, error }) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
-            <div>
-                <Field placeholder={'Email'} name={'email'} component={Input}
-                    validate={[required]} />
-            </div>
-            <div>
-                <Field placeholder={'Password'} name={'password'} component={Input} type={'password'}
-                    validate={[required]} />
-            </div>
+            {createField('Email', 'email', Input, [required] ) }
+
+            {createField('Password', 'password', Input, [required], {type: 'password'} ) }
+
+          
             <div>
                 <Field component={Input} name={'rememberMe'} type={'checkbox'} /> remember me
             </div>
 
-            {props.error && <div className={style.formSummeryError}>
-                {props.error}
+            {error && <div className={style.formSummeryError}>
+                {error}
             </div>}
 
             <div>

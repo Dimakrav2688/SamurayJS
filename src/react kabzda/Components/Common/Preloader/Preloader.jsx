@@ -3,7 +3,7 @@ import preloader from '../../../../assets/images/preloader.svg'
 
 let Preloader = (props) => {
  return <div style= { {backgroundColor: 'yellowgreen'} }> 
- <img src={preloader}/>
+ <img src={preloader} alt={'jpg'}/>
  </div>
 }
 export default Preloader;

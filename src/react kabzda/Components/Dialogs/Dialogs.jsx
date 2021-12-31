@@ -13,7 +13,7 @@ const Dialogs = (props) => {
 
     let dialogsElements = state.dialogsData.map(d => <DialogsItem image={d.image} key={d.id} altname={d.altname} name={d.name} id={d.id} />);
     let messagesElements = state.messagesData.map(m => <Massage message={m.message} key={m.id} />);
-    let newMessageBody = state.newMessageBody;
+    // let newMessageBody = state.newMessageBody;
 
 
        

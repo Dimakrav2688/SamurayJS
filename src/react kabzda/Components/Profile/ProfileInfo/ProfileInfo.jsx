@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
                 <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSqGXWxnqPFnard5hLpVbESctI66fKrfJ8Bw&usqp=CAU' alt='' />
             </div> */}
             <div className={s.discriptionBlok}>
-                <img src={props.profile.photos.large} />
+                <img src={props.profile.photos.large} alt={'img'} />
                 <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
             </div>
         </div>

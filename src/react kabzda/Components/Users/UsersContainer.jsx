@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsers } from '../../redux/users-reduser';
 import Users from "./Users";
 import Preloader from '../Common/Preloader/Preloader';
-import { withAuthRedirectHOC } from '../../../hoc/withAuthRedirect';
+// import { withAuthRedirectHOC } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux'
 import {
     getUsersSelector, getPageSize, getTotalUsersCount,

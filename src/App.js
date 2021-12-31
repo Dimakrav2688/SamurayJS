@@ -5,7 +5,7 @@ import NavBar from './react kabzda/Components/Navbar/NavBar';
 import ProfileContainer from './react kabzda/Components/Profile/ProfileContainer';
 import UsersContainer from './react kabzda/Components/Users/UsersContainer';
 import Music from './react kabzda/Components/Navbar/Music';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import HeaderContainer from './react kabzda/Components/Header/HeaderContainer';
 import Login from './react kabzda/Components/Login/Login';
 import { connect } from 'react-redux';
@@ -25,7 +25,7 @@ class App extends Component {
     }
 
     return (
-      <BrowserRouter>
+      
         <div className='app-wrapper'>
           <HeaderContainer />
           <NavBar />
@@ -48,8 +48,7 @@ class App extends Component {
             <Route path='/music'> <Music /> </Route>
             <Route path='/setings' component={NavBar} />
           </div>
-        </div>
-      </BrowserRouter>
+        </div>      
     );
   }
 }
