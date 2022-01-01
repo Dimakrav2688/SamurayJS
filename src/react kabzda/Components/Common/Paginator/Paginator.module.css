@@ -1,0 +1,17 @@
+.userPhoto {
+    width: 150px;
+    height: 200px;
+} 
+
+.selectedPage {
+    font-weight: bold; 
+}
+.hover {
+    padding: 0 3px;   
+}
+
+
+.hover:hover {
+    cursor: pointer;
+    background-color: yellow;
+}
