@@ -5,14 +5,14 @@ import User from "./User";
 
 
 
-let Users = ({ totalUsersCount, pageSize, currentPage, onPageChanged,
+let Users = ({ totalItemCount, pageSize, currentPage, onPageChanged,
     users, ...props }) => {
 
 
     return <div>
 
         <Paginator currentPage={currentPage} onPageChanged={onPageChanged}
-            totalUsersCount={totalUsersCount} pageSize={pageSize} />
+            totalItemCount={totalItemCount} pageSize={pageSize} />
         <div>
             {
                 users.map(user => <User user={user}
