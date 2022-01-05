@@ -56,6 +56,8 @@ class App extends Component {
   }
 }
 
+
+
 const mapStateToProps = (state) => ({
   initialized: state.app.initialized
 })
