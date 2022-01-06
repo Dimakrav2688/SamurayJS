@@ -37,15 +37,11 @@ class App extends Component {
             </Switch>
           </Suspense>
 
-
-
-
           <Route path='/users'
             render={() => <UsersContainer />} />
 
           <Route path='/login'
             render={() => <Login />} />
-
 
           <Route path='/news' component={NavBar} />
           <Route path='/music'> <Music /> </Route>
