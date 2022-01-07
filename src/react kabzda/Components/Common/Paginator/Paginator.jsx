@@ -14,13 +14,15 @@ const Paginator = ({ totalItemCount, pageSize, currentPage, onPageChanged, porti
     
     const pagesCount = Math.ceil(totalItemCount / pageSize)
 
-    let pages = [];
+    const pages = [];
+
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
 
     const portionCount = Math.ceil(pagesCount / portionSize);
     const [portionNumber, setPortionNumber] = useState(1);
+    
     const leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
     const rightPortionPageNumber = portionNumber * portionSize;
 
