@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import { getUserProfile, getStatus, updateStatus, savePhoto } from '../../redux/profile-reduser';
+import { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile } from '../../redux/profile-reduser';
 import { withRouter } from 'react-router-dom';
 // import { withAuthRedirectHOC } from "../../../hoc/withAuthRedirect";
 import { compose } from "redux";
@@ -42,7 +42,8 @@ class ProfileContainer extends React.Component {
                 profile={this.props.profile}
                 status={this.props.status}
                 updateStatus={this.props.updateStatus} 
-                savePhoto={this.props.savePhoto} />
+                savePhoto={this.props.savePhoto}
+                />
         )
     }
 }
@@ -60,7 +61,7 @@ let mapStateToProps = (state) => ({
 //пропс isAuth: state.auth.isAuth вырвали с мапстейт то пропс и потянули в шаблон НОС. потом зарефакторим говорил димон)
 
 export default compose(
-    connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto }),
+    connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile }),
     withRouter,
     // withAuthRedirectHOC
 )(ProfileContainer)

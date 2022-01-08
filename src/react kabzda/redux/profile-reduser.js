@@ -40,6 +40,7 @@ const profileReduser = (state = initialState, action) => {
         case SAVE_PHOTO_SUCCESS: {
             return { ...state, profile: {...state.profile, photos: action.photos} }
         }
+        
         default:
             return state;
 
@@ -77,6 +78,13 @@ export const savePhoto = (file) => async (dispatch) => {
     const response = await profileAPI.savePhoto(file);
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos))    
+};
+}
+export const saveProfile = (profile) => async (dispatch) => {
+    let response = await profileAPI.saveProfile(profile);
+    
+    if (response.data.resultCode === 0) {
+        // dispatch(savePhotoSuccess(response.data.data.photos))    
 };
 }
 

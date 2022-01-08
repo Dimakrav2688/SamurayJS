@@ -15,17 +15,16 @@ const FormControl = ({ meta: {touched, error}, children }) => {
 }
 
 export const Textarea = (props) => {
-    const { input, meta, child, ...restProps } = props;
-    return <FormControl {...props}><textarea {...input} {...restProps} /></FormControl>
+    const { input, meta, children, ...restProps } = props;
+    return <FormControl {...props}><textarea  {...input} {...restProps}  /></FormControl>
 
 }
-
 // важно помнить что библиотека передаёт много значений в meta, по этому нужно просто заюзать мета данные
 // в переменную используем значения далее, шаблон используем не только в спане но и в стилизации.......
 // по этому важно изучить хорошо библиотеку
 
 export const Input = (props) => {
-    const { input, meta, child, ...restProps } = props;
+    const { input, meta, children, ...restProps } = props;
     return <FormControl {...props}><input {...input} {...restProps} /></FormControl>
 }
 
