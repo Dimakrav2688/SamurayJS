@@ -1,5 +1,3 @@
-// import reportWebVitals from './reportWebVitals';
-// import store from './react kabzda/redux/redux-store';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -28,4 +26,3 @@ import {store} from './react kabzda/redux/redux-store'
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
 
-// state={state} dispatch={store.dispatch.bind(store)} store={store}  , старый вариант прокидывания пропсов в АПП комп.

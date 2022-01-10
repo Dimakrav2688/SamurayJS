@@ -29,27 +29,29 @@ class App extends Component {
       <div className='app-wrapper'>
         <HeaderContainer />
         <NavBar />
+
         <div className='app-wrapper-content'>
-          <Suspense fallback={<Preloader />}>
-            <Switch >
-              <Route path='/dialogs' component={DialogsContainer} />
-              <Route path='/profile/:userId?' component={ProfileContainer} />
-            </Switch>
-          </Suspense>
+          
+            <Suspense fallback={<Preloader />}>
+              <Switch >
+                <Route path='/dialogs' component={DialogsContainer} />
+                <Route path='/profile/:userId?' component={ProfileContainer} />
+              </Switch>
+            </Suspense>
+
+            <Route path='/users'
+              render={() => <UsersContainer />} />
+            <Route path='/login'
+              render={() => <Login />} />
 
 
+            <Route path='/news' component={NavBar} />
+            <Route path='/music'> <Music /> </Route>
+            <Route path='/setings' component={NavBar} />
 
-
-          <Route path='/users'
-            render={() => <UsersContainer />} />
-
-          <Route path='/login'
-            render={() => <Login />} />
-
-
-          <Route path='/news' component={NavBar} />
-          <Route path='/music'> <Music /> </Route>
-          <Route path='/setings' component={NavBar} />
+            <Route path='*'
+              render={() => <div>404 NOT FOUND </div>} />
+         
         </div>
       </div >
     );
