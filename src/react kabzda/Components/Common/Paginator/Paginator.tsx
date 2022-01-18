@@ -3,10 +3,16 @@ import { useState } from "react";
 
 import styles from './Paginator.module.css';
 
+type PropsType = {
+    totalItemCount: number
+    pageSize: number
+    currentPage: number
+    onPageChanged: (pageNuber: number)=> void
+    portionSize?: number
+}
 
 
-
-const Paginator = ({ totalItemCount, pageSize, currentPage, onPageChanged, portionSize = 20 }) => {
+const Paginator: React.FC<PropsType> = ({ totalItemCount, pageSize, currentPage, onPageChanged, portionSize = 20 }) => {
     // const pages = [];
     // for (const i = 1; i <= 21; i++) {
     //     pages.push(i);
@@ -14,14 +20,16 @@ const Paginator = ({ totalItemCount, pageSize, currentPage, onPageChanged, porti
     
     const pagesCount = Math.ceil(totalItemCount / pageSize)
 
-    const pages = [];
+    const pages: Array<number> = [];
 
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
 
     const portionCount = Math.ceil(pagesCount / portionSize);
-    const [portionNumber, setPortionNumber] = useState(1);
+    let [portionNumber, setPortionNumber] = useState(1);
+    // if(portionNumber === null) portionNumber = 1; если бы указывали что в стейте может быть и null ||||| 
+    //в присвоении такое писали бы useState<number | null>(1);
     
     const leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
     const rightPortionPageNumber = portionNumber * portionSize;

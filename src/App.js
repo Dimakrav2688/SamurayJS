@@ -40,7 +40,7 @@ class App extends Component {
             </Suspense>
 
             <Route path='/users'
-              render={() => <UsersContainer />} />
+              render={() => <UsersContainer pageTitle={'Samuraui'} />} />
             <Route path='/login'
               render={() => <Login />} />
 

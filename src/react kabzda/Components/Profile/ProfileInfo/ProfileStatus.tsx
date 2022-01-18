@@ -1,9 +1,17 @@
 import React from "react";
+import { ChangeEvent } from "react";
 import s from './ProfileInfo.module.css';
 
+type PropsType = {
+    status: string
+    updateStatus: (newStatus: string) => void
+}
+type StateType = {
+    editMode: boolean
+    status: string
+}
 
-
-class ProfileStatus extends React.Component {
+class ProfileStatus extends React.Component<PropsType, StateType > {
     state = {
         editMode: false,
         status: this.props.status,
@@ -21,22 +29,20 @@ class ProfileStatus extends React.Component {
         })
         this.props.updateStatus(this.state.status);
     }
-    onStatusChange = (e) => {
+    onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             status: e.currentTarget.value
         })
 
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        
+    componentDidUpdate(prevProps: PropsType, prevState: StateType) {
+
         if (prevProps.status !== this.props.status) {
             this.setState({
                 status: this.props.status
             });
         }
-
-        console.log("componentDidUpdate")
     }
 
     render() {
