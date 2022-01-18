@@ -1,5 +1,4 @@
 import profileReduser, {addPostActionCreator} from './profile-reduser'
-import React from 'react'
 
 
 

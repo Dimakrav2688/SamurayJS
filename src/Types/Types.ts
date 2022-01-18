@@ -1,3 +1,5 @@
+import { AnyAction } from "redux"
+
 export type PostDataType = {
     id: number
     message: string
@@ -31,5 +33,5 @@ export type UserType = {
     status: string
     photos: PhotosType
     followed: boolean
-    key?: any
+    key: any 
 }

@@ -13,8 +13,8 @@ type PropsType = {
     followingInProgress: Array<number>
     unfollow: (userId: number) => void
     follow:(userId: number) => void
-    key?: any 
 }
+    
 
 
 let Users: React.FC<PropsType> = ({ totalItemCount, pageSize, currentPage, onPageChanged,
@@ -28,7 +28,7 @@ let Users: React.FC<PropsType> = ({ totalItemCount, pageSize, currentPage, onPag
         <div>
             {
                 users.map(user => <User user={user}
-                    key={users.id} 
+                    // key={users.id}
                     followingInProgress={props.followingInProgress}
                     unfollow={props.unfollow}
                     follow={props.follow}
