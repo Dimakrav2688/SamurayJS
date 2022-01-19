@@ -12,16 +12,16 @@ type LoginFormOwnProps = {
     captchaUrl: string | null
 }
 
-const LoginForm: React.FC<InjectedFormProps<LoginFromValuesType, LoginFormOwnProps> & LoginFormOwnProps > 
+const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnProps> & LoginFormOwnProps > 
 = ({ handleSubmit, error, captchaUrl,  }) => {
     return (
         <form onSubmit={handleSubmit}>
 
-            {createField('Email', 'email',[required], Input,  ) }
+            {createField('Email', 'email',[required], Input ) }
 
             {createField('Password', 'password', [required], Input, {type: 'password'} ) }
 
-            {createField(null, 'rememberMe', [], Input, {type: 'checkbox'}, 'remember me' ) }       
+            {createField(undefined, 'rememberMe', [], Input, {type: 'checkbox'}, 'remember me' ) }       
             
 
             {captchaUrl && <img src={captchaUrl} alt='captcha' />}
@@ -39,7 +39,7 @@ const LoginForm: React.FC<InjectedFormProps<LoginFromValuesType, LoginFormOwnPro
 
 }
 
-const LoginReduxForm = reduxForm<LoginFromValuesType, LoginFormOwnProps >({ form: 'login' })(LoginForm)
+const LoginReduxForm = reduxForm<LoginFormValuesType, LoginFormOwnProps >({ form: 'login' })(LoginForm)
 
 type MapStatePropsType = {
     captchaUrl: string | null
@@ -49,15 +49,17 @@ type MapDispatchPropsType = {
     login: (email: string, password: string, rememberMe: boolean, captcha: string) => void //в auth-reduser, логин принимает пропсы тут копируем
 }
 
-type LoginFromValuesType = {
+type LoginFormValuesType = {
     email: string
     password: string
     rememberMe: boolean
     captcha: string
 }
+type LoginFormValuesTypeKeys = Extract<keyof LoginFormValuesType, string>
+
 
 const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
-    const onSubmit = (formData: LoginFromValuesType) => {
+    const onSubmit = (formData: LoginFormValuesType) => {
         props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
     if (props.isAuth) {

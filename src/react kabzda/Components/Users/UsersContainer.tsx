@@ -20,7 +20,7 @@ type MapStatePropsType = {
     totalItemCount: number
     users: Array<UserType>
     followingInProgress: Array<number>
-    key?: any
+    
 }
 type MapDispatchPropsType = {
     getUsers: (currentPage: number, pageSize: number) => void
@@ -32,8 +32,9 @@ type MapDispatchPropsType = {
 type OwnPropsType = {
     pageTitle: string
 }
-
 type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
+
+
 class UsersContainer extends React.Component<PropsType> {
 
     componentDidMount() {
@@ -45,7 +46,7 @@ class UsersContainer extends React.Component<PropsType> {
         const { pageSize } = this.props
         this.props.getUsers(pageNumber, pageSize)
     }
-    // было this.props.pageSize  почему стало {pageSize} = this.props === pageSize  не совсем ясно.. Димон памагити
+    
     render() {
 
         return <>

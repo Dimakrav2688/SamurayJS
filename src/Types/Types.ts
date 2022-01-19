@@ -33,5 +33,5 @@ export type UserType = {
     status: string
     photos: PhotosType
     followed: boolean
-    key: any 
+    key?: React.Key    
 }

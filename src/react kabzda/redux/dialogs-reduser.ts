@@ -67,7 +67,7 @@ const dialogsReduser = (state = initialState, action: ActionsType): InitialState
 export type ActionsType = InferActionsTypes<typeof action>
 
 export const action = {
-    sendMessageCreator:(newMessageBody: string) => ({ type: 'SEND_MESSAGE', newMessageBody } as const) 
+    sendMessage:(newMessageBody: string) => ({ type: 'SEND_MESSAGE', newMessageBody } as const) 
 }
 
 export default dialogsReduser;

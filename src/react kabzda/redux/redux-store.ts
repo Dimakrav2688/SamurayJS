@@ -22,9 +22,7 @@ let rootReducers =  combineReducers({
 type RootReduserType = typeof rootReducers
 export type AppStateType = ReturnType<RootReduserType>
 
-type PropertiesTypes<T> = T extends {[key: string]: infer U} ? U : never
-
-export type InferActionsTypes<T extends {[key: string]: (...args: any[])=> any}> =  ReturnType <PropertiesTypes<T>>
+export type InferActionsTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
 
 export type BaseThunkType<A extends Action = Action, R= Promise<void>> = ThunkAction<R, AppStateType, unknown, A>
 /*это берется в документации там описывается типизация и эти значения для санок, если асинхронщина то есть промис, есть РутСтейт, 

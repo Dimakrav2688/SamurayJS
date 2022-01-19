@@ -2,12 +2,20 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogsItem from './DialogItem/DialogsItem';
 import Massage from './Massage/Massage';
-import { Redirect } from 'react-router-dom';
-import AddMessageForm from '../Dialogs/AddMessageFrom/AddMessageFrom'
+import AddMessageForm from './AddMessageFrom/AddMessageFrom'
+import {InitialStateType} from '../../redux/dialogs-reduser'
+
+type OwnPropsType = {
+    dialogsPage: InitialStateType
+    sendMessage: (messageText: string) => void
+    
+}
+export type NewMessageFormValuesType = {
+    newMessageBody: string    
+}
 
 
-
-const Dialogs = (props) => {
+const Dialogs: React.FC<OwnPropsType> = (props) => {
 
     let state = props.dialogsPage;
 
@@ -17,10 +25,10 @@ const Dialogs = (props) => {
 
 
        
-    let addNewMessage = (values) => {
+    let addNewMessage = (values: NewMessageFormValuesType) => {
         props.sendMessage(values.newMessageBody); 
     }
-    if (!props.isAuth) return <Redirect to={'/Login'} />;
+    
 
 
     return (
@@ -41,8 +49,8 @@ const Dialogs = (props) => {
     );
 }
 
-
-
-
-
 export default Dialogs;
+
+
+// if (!props.isAuth) return <Redirect to={'/Login'} />; ранее использовали как редирект, потом сделали HOCRedireckt
+// и надобности его использования в пюр комп. нету. 

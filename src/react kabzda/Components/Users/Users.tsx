@@ -28,7 +28,7 @@ let Users: React.FC<PropsType> = ({ totalItemCount, pageSize, currentPage, onPag
         <div>
             {
                 users.map(user => <User user={user}
-                    // key={users.id}
+                    key={user.id}
                     followingInProgress={props.followingInProgress}
                     unfollow={props.unfollow}
                     follow={props.follow}

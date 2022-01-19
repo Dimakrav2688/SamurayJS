@@ -11,10 +11,21 @@ import { initializeApp } from './react kabzda/redux/app-reduser'
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import Preloader from './react kabzda/Components/Common/Preloader/Preloader';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import {AppStateType, store} from './react kabzda/redux/redux-store'
+
 let DialogsContainer = lazy(() => import('./react kabzda/Components/Dialogs/DialogsContainer'));
 let ProfileContainer = lazy(() => import('./react kabzda/Components/Profile/ProfileContainer'));
 
-class App extends Component {
+
+type PropsType = ReturnType<typeof mapStateToProps>
+type DispatchPropsType = {
+  initializeApp: () => void
+}
+
+
+class App extends Component<PropsType & DispatchPropsType > {
   componentDidMount() {
     this.props.initializeApp()
   }
@@ -58,12 +69,18 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
   initialized: state.app.initialized
 })
 
-export default compose(
-  withRouter,
-  connect(mapStateToProps, { initializeApp }))(App);
+let AppContainer = compose<React.ComponentType>( withRouter, connect(mapStateToProps, { initializeApp }))(App);
 
+const SamuraiJSApp: React.FC= () => {
+  return <BrowserRouter>
+  <Provider store={store}>
+    <AppContainer  />
+  </Provider>
+</BrowserRouter>
+}
 
+export default SamuraiJSApp 
