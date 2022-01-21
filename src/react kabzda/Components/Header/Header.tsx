@@ -1,8 +1,15 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import s from './Header.module.css';
+import { NavLink } from 'react-router-dom'
+import s from './Header.module.css'
 
-const Header = ({isAuth, login, logout}) => {
+export type MapPropsType = {
+  isAuth: boolean
+  login: string | null  
+}
+export type DispatchPropsType = {  
+  logout: () => void
+}
+
+const Header: React.FC<MapPropsType & DispatchPropsType> = ({isAuth, login, logout}) => {
   
   return (    
     <header className={s.header}>
@@ -13,7 +20,7 @@ const Header = ({isAuth, login, logout}) => {
         : <NavLink to={'/login'}>Login</NavLink> }
       </div>
     </header>
-  );
+  )
 
 }
 // 

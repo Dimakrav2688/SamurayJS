@@ -2,21 +2,28 @@ import React from "react";
 import UserPhoto from '../../../assets/images/avatarka.png';
 import styles from './users.module.css';
 import { NavLink } from 'react-router-dom';
+import { UserType } from "../../../Types/Types";
 
 
 
+type PropsType ={
+    user: UserType
+    followingInProgress: Array<number>
+    unfollow: (userId: number) => void
+    follow: (userId: number) => void
+}
 
 
 
-let User = ({ user, followingInProgress, unfollow, follow }) => {
+let User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow }) => {
 
     return (
         <div >
             <span>
                 <div>
                     <NavLink to={'profile/' + user.id}>
-                        <img src={user.photos.small ? user.photos.small : UserPhoto}
-                            alt={user.id} className={styles.userPhoto} />
+                        <img src={user.photos.small != null ? user.photos.small : UserPhoto}
+                            alt={'photo'} className={styles.userPhoto} />
                     </NavLink>
                 </div>
                 <div>
@@ -42,9 +49,9 @@ let User = ({ user, followingInProgress, unfollow, follow }) => {
                     <div>{"user.location.country"}</div>
                     <div>{"user.location.city"}</div>
                 </span>
-            </span>
-        </div>
-    )
+            </span>         
+        </div>        
+    )    
 }
 
 export default User;

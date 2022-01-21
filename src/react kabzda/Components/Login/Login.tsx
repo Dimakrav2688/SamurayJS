@@ -49,13 +49,15 @@ type MapDispatchPropsType = {
     login: (email: string, password: string, rememberMe: boolean, captcha: string) => void //в auth-reduser, логин принимает пропсы тут копируем
 }
 
-type LoginFormValuesType = {
+export type LoginFormValuesType = {
     email: string
     password: string
     rememberMe: boolean
     captcha: string
 }
-type LoginFormValuesTypeKeys = Extract<keyof LoginFormValuesType, string>
+
+type GetStringKeys<T> = Extract<keyof T, string>
+type LoginFormValuesTypeKeys = GetStringKeys<LoginFormValuesType>
 
 
 const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {

@@ -1,5 +1,4 @@
 import { FormAction, stopSubmit } from "redux-form";
-import { usersAPI } from "../api/users-api";
 import { profileAPI } from "../api/profile-api";
 import { BaseThunkType, InferActionsTypes } from "./redux-store";
 
@@ -31,6 +30,7 @@ type ProfileType = {
     fullName: string
     contacts: ContactsType
     photos: PhotosType
+    aboutMe: string
 }
 
 
@@ -43,8 +43,7 @@ let initialState = {
     ] as Array<PostDataType>, // это к MyPosts елементам    
     profile: null as ProfileType | null,
     status: '',
-    savePhoto: '',
-    newPostText: '',
+    savePhoto: '',    
 }
 export type InitialStateType = typeof initialState
 

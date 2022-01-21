@@ -1,11 +1,18 @@
 import { createField, Input, Textarea } from "../../Common/FromsControls/FormsControls";
-import { reduxForm } from 'redux-form';
+import { InjectedFormProps, reduxForm } from 'redux-form';
 import s from './ProfileInfo.module.css';
 import style from '../../Common/FromsControls/FormsControls.module.css'
+import { ProfileType } from "../../../../Types/Types";
 
 
+type PropsType = {    
+    profile: ProfileType    
+}
 
-const ProfileDataForm = ({ handleSubmit, profile, error }) => {
+type GetStringKeys<T> = Extract<keyof T, string>
+type ProfileTypeKeys = GetStringKeys<ProfileType> // не ясно как у него проходим типизация филдов, явно же бред, но у него работает
+
+const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, PropsType> & PropsType> = ({ handleSubmit, profile, error }) => {
     return <form onSubmit={handleSubmit}>
 
         <div><button >Save</button></div>
@@ -41,6 +48,6 @@ const ProfileDataForm = ({ handleSubmit, profile, error }) => {
     </form>
 }
 
-const ProfileDataReduxForm = reduxForm({ form: 'edit-profile' })(ProfileDataForm)
+const ProfileDataReduxForm = reduxForm<ProfileType, PropsType>({ form: 'edit-profile' })(ProfileDataForm)
 
 export default ProfileDataReduxForm;
